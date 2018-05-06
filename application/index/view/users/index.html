@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link type="text/css" rel="stylesheet" href="/static/bs/css/bootstrap.css" />
+            <script src="/static/bs/js/jquery.min.js"></script>
+    <script src="/static/bs/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        th{
+            text-align: center;
+        }
+        td{
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <button class="btn btn-success">用户信息</button>
+            <a href="/user/create" class="btn btn-danger">添加用户</a>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover" >
+                <th>编号</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>手机号</th>
+                <th>操作</th>
+                <th>删除</th>
+                {volist name="data" id="v"}
+                <tr>
+                    <td>{$v.id}</td>
+                    <td>{$v.name}</td>
+                    <td>{$v.password}</td>
+                    <td>{$v.phone}</td>
+                    <td><a href="/user/{$v.id}/edit">修改</a>
+                        &nbsp
+                        <form action="/user/{$v.id}" method="post">
+                           <input type="hidden" name="_method" value="delete">
+                            <button>删除</button>
+                        </form>
+                    <td>
+                    <button onclick="del(this,{$v.id})">Ajax_删除</button>
+                </td>
+
+                </tr>
+                {/volist}
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function del(obj,id) {
+        $.post('{:url("ajax_del")}',{id:id},function (data) {
+            if(data.statu==200){
+                $(obj).parent().parent().remove();
+                alert(data.info);
+            }else{
+                alert(data.info);
+            }
+        });
+    }
+</script>
+</html>

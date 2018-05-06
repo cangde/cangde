@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="/static/bs/css/bootstrap.css" />
+    <script src="/static/bs/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/bs/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        th{
+            text-align: center;
+        }
+        td{
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <button class="btn btn-success">修改用户页面</button>
+            <a href="/user" class="btn btn-danger">查看用户信息</a>
+        </div>
+        <div class="panel-body">
+            <form action="/user/{$data.id}" method="post">
+                <div class="form-group">
+                    <input type="hidden" name="_method" value="PUT">
+                <label for="">用户名</label>
+                <input placeholder="请输入用户名" value="{$data.name}" type="text" name="name" class="form-control"  id="">
+                </div>
+                <div class="form-group">
+                    <label for="">密码</label>
+                    <input placeholder="请输入密码" value="{$data.password}" type="text" name="password" class="form-control"  id="">
+                </div>
+                <div class="form-group">
+                    <label for="">手机号</label>
+                    <input placeholder="请输入手机号" value="{$data.phone}" type="number" name="phone" class="form-control"  id="">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="提交" class="btn btn-success">
+                    <input type="reset" value="重置" class="btn btn-danger">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

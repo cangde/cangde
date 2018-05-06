@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function show()
+        {
+        var tom = new XMLHttpRequest();
+        tom.open("GET","/index/ajax/index",true);
+        tom.send();
+        tom.onreadystatechange=function()
+        {
+            if (tom.readyState==3&&tom.status==200)
+            {
+                document.getElementById("txt").innerHTML = "加载中";
+            }
+            if (tom.readyState==4 && tom.status==200) {
+                document.getElementById("txt").innerHTML = tom.responseText;
+            }
+
+        }
+        }
+        /*
+        *
+        * */
+
+    </script>
+
+<input type="button" onclick="show()" name="code" value="点击调用">
+<div onclick="show()">下一页</div>
+<span id="txt"></span>
+</body>
+</html>

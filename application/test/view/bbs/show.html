@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bs/css/bootstrap.css">
+
+
+    <meta charset="UTF-8">
+    <title>留言板</title>
+</head>
+<body>
+<h1>留言如下：</h1>
+<div>------------------</div>
+{volist name='data' id='vo'}
+    {$i}姓名：{$vo.name}年龄 ：{$vo.age}<br/>
+{/volist}
+<div>
+    <ul>
+        {volist name='data' id='vo'}
+        {$i}姓名：{$vo.name}年龄 ：{$vo.age}<br/>
+        {/volist}
+    </ul>
+</div>
+{$data->render()}
+
+<div>------------------</div>
+</body>
+</html>
